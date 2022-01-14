@@ -1,0 +1,9 @@
+---
+name: Simple SARLock
+passes:
+  - name: SARLock
+    locking-type: sarlock
+    integration-node:
+      type: output
+    number-bits: 8
+    primary-input-start: 0

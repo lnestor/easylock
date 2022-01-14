@@ -1,0 +1,16 @@
+---
+name: Simple SARLock
+passes:
+  - name: SARLock
+    locking-type: sarlock
+    integration-node:
+      type: output
+    number-bits: 8
+    primary-input-start: 0
+  - name: Multiplexers
+    locking-type: multiplexer
+    integration-node:
+      type: previous
+    control-type: normal
+    number-to-add: 2
+    primary-input-start: continuous
