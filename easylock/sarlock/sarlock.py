@@ -15,7 +15,7 @@ def create_comparator(moddef, key_inputs, primary_inputs, args):
 
 def add_mask(moddef, comparator, key_inputs, args):
     correct_key = args["correct_key"]
-    mask_comparator = create_const_comparator(moddef, key_inputs, correct_key)
+    mask_comparator = create_const_comparator(moddef, key_inputs, correct_key, inverted=True)
 
     instance_name = "MASK_AND_%i" % settings.uid
     output_name = "mask_and_%i" % settings.uid

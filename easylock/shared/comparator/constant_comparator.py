@@ -1,7 +1,7 @@
 import settings
 from shared.ast_modify import create_ilist
 
-def create_const_comparator(moddef, inputs, pattern):
+def create_const_comparator(moddef, inputs, pattern, inverted=False):
     """Creates a comparator that compares a pattern to the inputs
 
     If the inputs match the pattern, the output of the comparator is 1.
@@ -36,6 +36,10 @@ def create_const_comparator(moddef, inputs, pattern):
         xnor = create_ilist(moddef, "xnor", instance_name, output_name, input_pair)
         xnor_outputs[i] = output_name
 
-    output_name = "const_comp_and_%i" % settings.uid
-    create_ilist(moddef, "and", "CONST_COMP_AND_%i" % settings.uid, output_name, xnor_outputs)
+    if inverted:
+        output_name = "const_comp_nand_%i" % settings.uid
+        create_ilist(moddef, "nand", "CONST_COMP_NAND_%i" % settings.uid, output_name, xnor_outputs)
+    else:
+        output_name = "const_comp_and_%i" % settings.uid
+        create_ilist(moddef, "and", "CONST_COMP_AND_%i" % settings.uid, output_name, xnor_outputs)
     return output_name
